@@ -15,8 +15,8 @@ void Usuario::prestarMaterial(MaterialBibliografico* _material){
         cout<<"-------------------------------------------------------"<<endl;
         for(int i = 0; i < 5; i++){
             if(MaterialesPrestados[i] == nullptr){
+                _material->setEstado(true);
                 MaterialesPrestados[i] = _material;
-                MaterialesPrestados[i]->setEstado(true);
                 break;
             }
         }
@@ -28,16 +28,17 @@ void Usuario::prestarMaterial(MaterialBibliografico* _material){
     }
 }
 
-void Usuario::devolverMaterial(int _isbn){
-    int index = buscarLibro(_isbn);
+void Usuario::devolverMaterial(MaterialBibliografico* _material){
+    int index = buscarLibro(_material);
     if(index >= 0){
         cout<<"Libro devuelto con exito"<<endl;
         cout<<"-------------------------------------------------------"<<endl;
         delete MaterialesPrestados[index];
+        _material->setEstado(false);
         MaterialesPrestados[index] = nullptr;
         ordenarLista();
     }else{
-        cout<<"No se ha encontrado el material con el id: "<<_isbn<<endl;
+        cout<<"No se ha encontrado el material"<<endl;
         cout<<"-------------------------------------------------------"<<endl;
         cout<<""<<endl;
     }
@@ -49,6 +50,14 @@ void Usuario::mostrarMaterialesPrestados(){
             MaterialesPrestados[i]->mostrarInformación();
         }
     }
+}
+
+int Usuario::getId(){return id;}
+
+void Usuario::mostrarInformacion(){
+    cout<<"Nombre de Usuario: "<<nombre<<endl;
+    cout<<"ID de Usuario: "<<id<<endl;
+    cout<<"-------------------------------------------------------"<<endl;
 }
 
 bool Usuario::verificadorLista(){
@@ -72,10 +81,10 @@ void Usuario::ordenarLista(){
     }
 }
 
-int Usuario::buscarLibro(int _isbn){
+int Usuario::buscarLibro(MaterialBibliografico* _material){
     for(int i = 0; i<5; i++){
         if(MaterialesPrestados[i] != nullptr){
-            if(_isbn == MaterialesPrestados[i]->getId()){
+            if(_material->getId() == MaterialesPrestados[i]->getId()){
                 return i;
             }
         }

@@ -8,7 +8,6 @@
 #include "Usuario.h"
 
 #include <iostream>
-
 using namespace std;
 
 void menuGlobal();
@@ -17,9 +16,20 @@ void ingresoDatos(int);
 void mostrarMateriales();
 void buscarMaterial();
 void buscador(string, bool);
+bool materialAux(string);
+void opcionesMaterial();
+void prestarMaterial();
+void devolverMaterial();
+void gestionUsuarios();
+void addUser();
+bool buscarUsuario(int, bool);
+void deleteUser();
 
+MaterialBibliografico* materialObj(string);
+Usuario* usuarioObj(int);
 void ordenarBiblioteca();
 bool hayEspacio();
+bool hayEspacioUsers();
 string upperletters(string);
 
 #endif

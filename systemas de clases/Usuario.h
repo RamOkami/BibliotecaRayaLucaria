@@ -11,16 +11,19 @@ private:
     string nombre;
     int id;
     //Una lista de punteros del tipo MaterialBibliografico
-    MaterialBibliografico* MaterialesPrestados[5] = {nullptr, nullptr, nullptr, nullptr, nullptr};
+    MaterialBibliografico* MaterialesPrestados[5] = {nullptr};
 public:
     Usuario(string, int);
     void prestarMaterial(MaterialBibliografico*);
-    void devolverMaterial(int);
+    void devolverMaterial(MaterialBibliografico*);
     void mostrarMaterialesPrestados();
+
+    int getId();
+    void mostrarInformacion();
 
     bool verificadorLista();
     void ordenarLista();
-    int buscarLibro(int);
+    int buscarLibro(MaterialBibliografico*);
 };
 
 #endif
