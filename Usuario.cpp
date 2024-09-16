@@ -33,7 +33,6 @@ void Usuario::devolverMaterial(MaterialBibliografico* _material){
     if(index >= 0){
         cout<<"Libro devuelto con exito"<<endl;
         cout<<"-------------------------------------------------------"<<endl;
-        delete MaterialesPrestados[index];
         _material->setEstado(false);
         MaterialesPrestados[index] = nullptr;
         ordenarLista();
@@ -65,7 +64,7 @@ bool Usuario::verificadorLista(){
     for(int i = 0; i<5; i++){
         if(MaterialesPrestados[i] != nullptr){aux++;}
     }
-    if(aux < 4){return true;}
+    if(aux < 5){return true;}
     return false;
 }
 

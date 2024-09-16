@@ -299,6 +299,7 @@ void devolverMaterial(){
         if(materialAux(nombre)){
             aux_material = materialObj(nombre);
             user->devolverMaterial(aux_material);
+            cout<<""<<endl;
         }else{
             cout<<""<<endl;
             cout<<"MATERIAL NO ENCONTRADO..."<<endl;
