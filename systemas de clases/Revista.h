@@ -12,7 +12,7 @@ private:
     string mesPublicacion;
 public:
     Revista(string, int, string, bool, int, string);
-    void mostrarInformación() override;
+    void mostrarInformacion() override;
 };
 
 #endif

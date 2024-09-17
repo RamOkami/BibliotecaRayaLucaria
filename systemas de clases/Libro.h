@@ -11,7 +11,7 @@ private:
     string fechaPublicacion, resumen;
 public:
     Libro(string, int, string, bool, string, string);
-    void mostrarInformación() override;
+    void mostrarInformacion() override;
 };
 
 #endif

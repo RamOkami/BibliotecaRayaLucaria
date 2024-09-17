@@ -13,7 +13,7 @@ private:
 
 public:
     MaterialBibliografico(string, int, string, bool);
-    virtual void mostrarInformación();
+    virtual void mostrarInformacion();
     int getId();
     string getTitulo();
     string getAutor();

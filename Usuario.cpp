@@ -46,7 +46,7 @@ void Usuario::devolverMaterial(MaterialBibliografico* _material){
 void Usuario::mostrarMaterialesPrestados(){
     for(int i = 0; i<5; i++){
         if(MaterialesPrestados[i] != nullptr){
-            MaterialesPrestados[i]->mostrarInformación();
+            MaterialesPrestados[i]->mostrarInformacion();
         }
     }
 }

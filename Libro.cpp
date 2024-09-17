@@ -9,8 +9,8 @@ Libro::Libro(string _nombre, int _isbn, string _autor, bool _prestado, string _f
     this -> resumen = _resumen;
 }
 
-void Libro::mostrarInformación(){
-    MaterialBibliografico::mostrarInformación();
+void Libro::mostrarInformacion(){
+    MaterialBibliografico::mostrarInformacion();
     cout<<endl;
     cout<<"Fecha de publicacion: "<<fechaPublicacion<<endl;
     cout<<"Resumen: "<<endl;

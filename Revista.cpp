@@ -9,8 +9,8 @@ Revista::Revista(string _nombre, int _isbn, string _autor, bool _prestado, int _
     this -> mesPublicacion = _mesPublicacion;
 }
 
-void Revista::mostrarInformación(){
-    MaterialBibliografico::mostrarInformación();
+void Revista::mostrarInformacion(){
+    MaterialBibliografico::mostrarInformacion();
     cout<<endl;
     cout<<"Numero de edicion: "<<numeroEdicion<<endl;
     cout<<"Mes de publicacion: "<<mesPublicacion<<endl;

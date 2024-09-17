@@ -138,7 +138,7 @@ void mostrarMateriales(){
     cout<<"-------------------------------------------------------"<<endl;
     for(MaterialBibliografico* material: biblioteca){
         if(material != nullptr){
-            material->mostrarInformación();
+            material->mostrarInformacion();
         }else{
             aux++;
         }
@@ -188,7 +188,7 @@ void buscador(string buscar, bool aux_busqueda){
                 cout<<""<<endl;
                 cout<<"Material encontrado: "<<endl;
                 cout<<"-------------------------------------------------------"<<endl;
-                material->mostrarInformación();
+                material->mostrarInformacion();
                 cout<<""<<endl;
                 break;
             }else{
@@ -201,7 +201,7 @@ void buscador(string buscar, bool aux_busqueda){
                 cout<<""<<endl;
                 cout<<"Material encontrado: "<<endl;
                 cout<<"-------------------------------------------------------"<<endl;
-                material->mostrarInformación();
+                material->mostrarInformacion();
                 cout<<""<<endl;
                 break;
             }else{

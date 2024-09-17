@@ -10,7 +10,7 @@ MaterialBibliografico::MaterialBibliografico(string _nombre, int _isbn, string _
     this -> prestado = _prestado;
 }
 
-void MaterialBibliografico::mostrarInformación(){
+void MaterialBibliografico::mostrarInformacion(){
     cout<<"Informacion del texto:"<<endl;
     cout<<"Nombre: "<<nombre<<endl;
     cout<<"Identificador: "<<isbn<<endl;
