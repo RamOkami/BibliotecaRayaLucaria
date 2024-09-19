@@ -4,7 +4,8 @@
 #include "systemas de clases/Usuario.h"
 #include "systemas de clases/system.h"
 
-#include <string.h>
+#include <string>
+#include <fstream>
 #include <iostream>
 using namespace std;
 
@@ -56,7 +57,7 @@ void menuGlobal(){
                 break;
             }
         }
-    }while(opera != 6 or opera < 1 or opera > 6);
+    }while(opera != 6);
 }
 
 //-----------------------------------------AGREGAR MATERIALES---------------------------------
@@ -67,13 +68,13 @@ void agregarMaterial(){
         cout<<"INGRESO DE MATERIALES"<<endl;
         cout<<"1.Agregar Libro"<<endl;
         cout<<"2.Agregar Revista"<<endl;
-        cout<<"3.Cancelar Operacion"<<endl;
+        cout<<"3.Regresar"<<endl;
         cout<<"Ingrese el numero de la operacion que desea realizar: "; cin>>opera;
 
         if(opera == 3){
-            cout<<"cancelando operacion..."<<endl;
             cout<<""<<endl;
-            menuGlobal();
+            cout<<"REGRESANDO AL MENU..."<<endl;
+            break;
         }else{
             ingresoDatos(opera);
             count_material++;
@@ -89,9 +90,13 @@ void ingresoDatos(int aux){
     bool prestamo;
 
     cout<<endl;
-    cout<<"Ingrese el nombre del texto: "; cin>>nombre;
+    cout<<"Ingrese el nombre del texto: ";
+    cin.ignore('\n');
+    getline(cin, nombre);
     cout<<"Ingrese el id del material: "; cin>>isbn;
-    cout<<"Ingrese el autor del texto: "; cin>>autor;
+    cout<<"Ingrese el autor del texto: ";
+    cin.ignore('\n');
+    getline(cin, autor);
     cout<<"Se encuentra prestado el material (S/N): "; cin>>prestado;
     cout<<endl;
 
@@ -102,8 +107,12 @@ void ingresoDatos(int aux){
     }
 
     if(aux == 1){
-        cout<<"Ingrese la fecha de publicacion: "; cin>>fechaPublicacion;
-        cout<<"Ingrese resumen: "; cin>>resumen;
+        cout<<"Ingrese la fecha de publicacion: ";
+        cin.ignore('\n');
+        getline(cin, fechaPublicacion);
+        cout<<"Ingrese resumen: ";
+        cin.ignore('\n');
+        getline(cin, resumen);
         cout<<endl;
 
         MaterialBibliografico* libros = new Libro(nombre, isbn, autor, prestamo, fechaPublicacion, resumen);
@@ -165,11 +174,15 @@ void buscarMaterial(){
         }else{
             switch(opera){
             case 1:
-                cout<<"Ingrese el nombre del autor: "; cin>>nombre;
+                cout<<"Ingrese el nombre del autor: ";
+                cin.ignore('\n');
+                getline(cin, nombre);
                 buscador(nombre, true);
                 break;
             case 2:
-                cout<<"Ingrese el titulo del material: "; cin>>titulo;
+                cout<<"Ingrese el titulo del material: ";
+                cin.ignore('\n');
+                getline(cin, titulo);
                 buscador(titulo, false);
                 break;
             case 3:
@@ -177,7 +190,7 @@ void buscarMaterial(){
                 break;
             }
         }
-    }while(opera != 3 or opera < 1 or opera > 3);
+    }while(opera != 3);
 }
 
 void buscador(string buscar, bool aux_busqueda){
@@ -266,7 +279,9 @@ void prestarMaterial(){
         user = usuarioObj(_id);
         cout<<""<<endl;
         cout<<"Busqueda de material"<<endl;
-        cout<<"Ingrese el nombre del material: "; cin>>nombre;
+        cout<<"Ingrese el nombre del material: ";
+        cin.ignore('\n');
+        getline(cin, nombre);
         if(materialAux(nombre)){
             aux_material = materialObj(nombre);
             if(!(aux_material->getEstado())){
@@ -295,7 +310,9 @@ void devolverMaterial(){
     if(buscarUsuario(_id, false)){
         user = usuarioObj(_id);
         cout<<""<<endl;
-        cout<<"Ingrese el nombre del material: "; cin>>nombre;
+        cout<<"Ingrese el nombre del material: ";
+        cin.ignore('\n');
+        getline(cin, nombre);
         if(materialAux(nombre)){
             aux_material = materialObj(nombre);
             user->devolverMaterial(aux_material);
@@ -349,7 +366,7 @@ void gestionUsuarios(){
                 break;
             }
         }
-    }while(opera != 4 or opera < 1 or opera > 4);
+    }while(opera != 4);
 }
 
 void addUser(){
@@ -357,7 +374,9 @@ void addUser(){
     int _id;
     bool aux = false;
     cout<<"AGREGAR USUARIOS"<<endl;
-    cout<<"Ingrese Nombre de Usuario: "; cin>>_nombre;
+    cout<<"Ingrese Nombre de Usuario: ";
+    cin.ignore('\n');
+getline(cin, _nombre);
     do{
         cout<<"Ingrese ID de Usuario: "; cin>>_id;
         if(buscarUsuario(_id, false)){
@@ -427,6 +446,15 @@ void deleteUser(){
             }
         }
     }
+}
+
+//--------------------------------CARGAR MATERIALES--------------------------------------
+void cargaMateriales(){
+    
+}
+
+void cargaUsuarios(){
+    
 }
 
 //--------------------------------------UTILIDADES--------------------------------------------

@@ -25,6 +25,9 @@ void addUser();
 bool buscarUsuario(int, bool);
 void deleteUser();
 
+void cargaMateriales();
+void cargaUsuarios();
+
 MaterialBibliografico* materialObj(string);
 Usuario* usuarioObj(int);
 void ordenarBiblioteca();
