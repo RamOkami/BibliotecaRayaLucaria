@@ -21,6 +21,7 @@ void opcionesMaterial();
 void prestarMaterial();
 void devolverMaterial();
 void gestionUsuarios();
+void gestionDatos();
 void addUser();
 bool buscarUsuario(int, bool);
 void deleteUser();

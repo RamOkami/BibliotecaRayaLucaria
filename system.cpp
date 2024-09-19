@@ -5,6 +5,8 @@
 #include "systemas de clases/system.h"
 
 #include <string>
+#include <limits>
+#include <sstream>
 #include <fstream>
 #include <iostream>
 using namespace std;
@@ -22,11 +24,12 @@ void menuGlobal(){
         cout<<"3. Buscar Materiales"<<endl;
         cout<<"4. Prestar o Devolver Material"<<endl;
         cout<<"5. Gestion de Usuarios"<<endl;
-        cout<<"6. Salir"<<endl;
+        cout<<"6. Gestion de Datos"<<endl;
+        cout<<"7. Salir"<<endl;
         cout<<"Ingrese el numero de operacion porfavor: "; cin>>opera;
         cout<<""<<endl;
 
-        if(opera < 1 or opera > 6){
+        if(opera < 1 or opera > 7){
             cout<<"ERROR: Valor fuera de rango..."<<endl;
             cout<<"REINGRESAR DATOS PORFAVOR"<<endl;
         }else{
@@ -53,11 +56,14 @@ void menuGlobal(){
                 gestionUsuarios();
                 break;
             case 6:
+                gestionDatos();
+                break;
+            case 7:
                 cout<<"SALIENDO DEL SISTEMA..."<<endl;
                 break;
             }
         }
-    }while(opera != 6);
+    }while(opera != 7);
 }
 
 //-----------------------------------------AGREGAR MATERIALES---------------------------------
@@ -91,11 +97,11 @@ void ingresoDatos(int aux){
 
     cout<<endl;
     cout<<"Ingrese el nombre del texto: ";
-    cin.ignore('\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, nombre);
     cout<<"Ingrese el id del material: "; cin>>isbn;
     cout<<"Ingrese el autor del texto: ";
-    cin.ignore('\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, autor);
     cout<<"Se encuentra prestado el material (S/N): "; cin>>prestado;
     cout<<endl;
@@ -108,10 +114,9 @@ void ingresoDatos(int aux){
 
     if(aux == 1){
         cout<<"Ingrese la fecha de publicacion: ";
-        cin.ignore('\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         getline(cin, fechaPublicacion);
         cout<<"Ingrese resumen: ";
-        cin.ignore('\n');
         getline(cin, resumen);
         cout<<endl;
 
@@ -175,13 +180,13 @@ void buscarMaterial(){
             switch(opera){
             case 1:
                 cout<<"Ingrese el nombre del autor: ";
-                cin.ignore('\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 getline(cin, nombre);
                 buscador(nombre, true);
                 break;
             case 2:
                 cout<<"Ingrese el titulo del material: ";
-                cin.ignore('\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 getline(cin, titulo);
                 buscador(titulo, false);
                 break;
@@ -280,7 +285,7 @@ void prestarMaterial(){
         cout<<""<<endl;
         cout<<"Busqueda de material"<<endl;
         cout<<"Ingrese el nombre del material: ";
-        cin.ignore('\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         getline(cin, nombre);
         if(materialAux(nombre)){
             aux_material = materialObj(nombre);
@@ -311,7 +316,7 @@ void devolverMaterial(){
         user = usuarioObj(_id);
         cout<<""<<endl;
         cout<<"Ingrese el nombre del material: ";
-        cin.ignore('\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         getline(cin, nombre);
         if(materialAux(nombre)){
             aux_material = materialObj(nombre);
@@ -337,7 +342,7 @@ void gestionUsuarios(){
         cout<<"Ingrese el numero de operacion: "; cin>>opera;
         cout<<""<<endl;
 
-        if(opera < 1 or opera > 4){
+        if(opera < 1 or opera > 5){
             cout<<"ERROR: Valor fuera de rango..."<<endl;
             cout<<"REINGRESAR DATOS PORFAVOR"<<endl; 
         }else{
@@ -375,8 +380,8 @@ void addUser(){
     bool aux = false;
     cout<<"AGREGAR USUARIOS"<<endl;
     cout<<"Ingrese Nombre de Usuario: ";
-    cin.ignore('\n');
-getline(cin, _nombre);
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(cin, _nombre);
     do{
         cout<<"Ingrese ID de Usuario: "; cin>>_id;
         if(buscarUsuario(_id, false)){
@@ -448,13 +453,121 @@ void deleteUser(){
     }
 }
 
-//--------------------------------CARGAR MATERIALES--------------------------------------
+//--------------------------------CARGAR DATOS--------------------------------------
+void gestionDatos(){
+    int opera = 0;
+    cout<<"PANTALLA DE GESTION DE DATOS"<<endl;
+    cout<<""<<endl;
+    do{
+        cout<<"1. Carga de Materiales"<<endl;
+        cout<<"2. Carga de Usuarios"<<endl;
+        cout<<"3. Regresar"<<endl;
+        cout<<"Ingrese el numero de la operacion que desea realizar: "; cin>>opera;
+        cout<<""<<endl;
+
+        if(opera < 1 or opera > 3){
+            cout<<"ERROR: Valor fuera de rango..."<<endl;
+            cout<<"REINGRESAR DATOS PORFAVOR"<<endl; 
+        }else{
+            switch(opera){
+                case 1:
+                    cargaMateriales();
+                    break;
+                case 2:
+                    cargaUsuarios();
+                    break;
+                case 3:
+                    cout<<"REGRESANDO AL MENU..."<<endl;
+                    cout<<""<<endl;
+                    break;
+            }
+        }
+    }while(opera != 3);
+}
+
 void cargaMateriales(){
+    fstream file;
+    string line, tipo, nombre, isbn, autor, estado, opcion_1, opcion_2;
+    bool aux_bool;
+
+    cout<<"CARGANDO MATERIALES..."<<endl;
+
+    file.open("archivos txt/materiales.txt", ios::in);
+    if(file.is_open()){
+        while(getline(file, line)){
+            stringstream ss(line);
+            getline(ss, tipo, '|');
+            getline(ss, nombre, '|');
+            getline(ss, isbn, '|');
+            getline(ss, autor, '|');
+            getline(ss, estado, '|');
+            getline(ss, opcion_1, '|');
+            getline(ss, opcion_2, '|');
+
+            if(upperletters(estado) == "PRESTADO"){
+                aux_bool = true;
+            }else{
+                aux_bool = false;
+            }
+
+            if(upperletters(tipo) == "LIBRO"){
+                MaterialBibliografico* libro = new Libro(nombre, stoi(isbn), autor, aux_bool, opcion_1, opcion_2);
+                for(int i = 0; i < 100; i++){
+                    if(biblioteca[i] == nullptr){
+                        biblioteca[i] = libro;
+                        break;
+                    }
+                }
+            }else if(upperletters(tipo) == "REVISTA"){
+                MaterialBibliografico* revista = new Revista(nombre, stoi(isbn), autor, aux_bool, stoi(opcion_1), opcion_2);
+                for(int i = 0; i < 100; i++){
+                    if(biblioteca[i] == nullptr){
+                        biblioteca[i] = revista;
+                        break;
+                    }
+                }
+            }
+        }
+        file.close();
+    }
     
+    cout<<"DATOS CARGADOS CON EXITO..."<<endl;
+    cout<<""<<endl;
 }
 
 void cargaUsuarios(){
+    fstream file;
+    string line, nombre, id, texto;
+    MaterialBibliografico* aux_material;
+
+    cout<<"CARGANDO USUARIOS..."<<endl;
     
+    file.open("archivos txt/usuarios.txt", ios::in);
+    if(file.is_open()){
+        while(getline(file, line)){
+            stringstream ss(line);
+            getline(ss, nombre, '|');
+            getline(ss, id, '|');
+            getline(ss, texto, '|');
+
+            Usuario* user = new Usuario(nombre, stoi(id));
+            for(int i = 0; i < 100; i++){
+                if(usuarios[i] == nullptr){
+                    usuarios[i] = user;
+                    break;
+                }
+            } 
+            if(texto != "" and texto != " "){
+                aux_material = materialObj(texto);
+                user->prestarMaterial(aux_material);
+                cout<<""<<endl;
+            }
+        }
+        file.close();
+    }
+
+    cout<<"DATOS CARGADOS CON EXITO..."<<endl;
+    cout<<""<<endl;
 }
 
 //--------------------------------------UTILIDADES--------------------------------------------
