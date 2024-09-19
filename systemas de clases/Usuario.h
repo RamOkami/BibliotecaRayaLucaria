@@ -17,7 +17,9 @@ public:
     void prestarMaterial(MaterialBibliografico*);
     void devolverMaterial(MaterialBibliografico*);
     void mostrarMaterialesPrestados();
+    string mostrarLista();
 
+    string getNombre();
     int getId();
     void mostrarInformacion();
 

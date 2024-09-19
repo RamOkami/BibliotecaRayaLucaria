@@ -1,2 +1,4 @@
-libro|el principito|1234|ni idea|no prestado|20 feb|Pendejo se enamora de una rosa mirenlo que tonto
-revista|e informatico|1237|ross|no prestado|21|Marzo
+LIBRO|Okami World|18|OkamiRK|no prestado|2004|Muy bueno totalmente recomendado para toda la familia
+REVISTA|Como mejorar en lol|99|manute|no prestado|101|febrero
+LIBRO|El Principito|20|No se|no prestado|1999|Muy bueno pero no se como se llama el autor pero muy bueno si
+REVISTA|Science|1734|Okami|no prestado|120|Diciembre

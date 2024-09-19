@@ -51,6 +51,17 @@ void Usuario::mostrarMaterialesPrestados(){
     }
 }
 
+string Usuario::mostrarLista(){
+    string line = "|";
+    for(MaterialBibliografico* material:MaterialesPrestados){
+        if(material != nullptr){
+            line += material->getTitulo()+"|";
+        }
+    }
+    return line;
+}
+
+string Usuario::getNombre(){return nombre;}
 int Usuario::getId(){return id;}
 
 void Usuario::mostrarInformacion(){

@@ -35,5 +35,7 @@ void ordenarBiblioteca();
 bool hayEspacio();
 bool hayEspacioUsers();
 string upperletters(string);
-
+void deleteTxt(string, string);
+void escribirTxt(string, string);
+void sobreescribirTxt(string, string, string);
 #endif
