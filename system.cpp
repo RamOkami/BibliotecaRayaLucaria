@@ -537,37 +537,44 @@ void cargaMateriales(){
     file.open("archivos txt/materiales.txt", ios::in);
     if(file.is_open()){
         while(getline(file, line)){
-            stringstream ss(line);
-            getline(ss, tipo, '|');
-            getline(ss, nombre, '|');
-            getline(ss, isbn, '|');
-            getline(ss, autor, '|');
-            getline(ss, estado, '|');
-            getline(ss, opcion_1, '|');
-            getline(ss, opcion_2, '|');
+            if(hayEspacio()){
+                stringstream ss(line);
+                getline(ss, tipo, '|');
+                getline(ss, nombre, '|');
+                getline(ss, isbn, '|');
+                getline(ss, autor, '|');
+                getline(ss, estado, '|');
+                getline(ss, opcion_1, '|');
+                getline(ss, opcion_2, '|');
 
-            if(upperletters(estado) == "PRESTADO"){
-                aux_bool = true;
+                if(upperletters(estado) == "PRESTADO"){
+                    aux_bool = true;
+                }else{
+                    aux_bool = false;
+                }
+
+                if(upperletters(tipo) == "LIBRO"){
+                    MaterialBibliografico* libro = new Libro(nombre, stoi(isbn), autor, aux_bool, opcion_1, opcion_2);
+                    for(int i = 0; i < 100; i++){
+                        if(biblioteca[i] == nullptr){
+                            biblioteca[i] = libro;
+                            break;
+                        }
+                    }
+                }else if(upperletters(tipo) == "REVISTA"){
+                    MaterialBibliografico* revista = new Revista(nombre, stoi(isbn), autor, aux_bool, stoi(opcion_1), opcion_2);
+                    for(int i = 0; i < 100; i++){
+                        if(biblioteca[i] == nullptr){
+                            biblioteca[i] = revista;
+                            break;
+                        }
+                    }
+                }
             }else{
-                aux_bool = false;
-            }
-
-            if(upperletters(tipo) == "LIBRO"){
-                MaterialBibliografico* libro = new Libro(nombre, stoi(isbn), autor, aux_bool, opcion_1, opcion_2);
-                for(int i = 0; i < 100; i++){
-                    if(biblioteca[i] == nullptr){
-                        biblioteca[i] = libro;
-                        break;
-                    }
-                }
-            }else if(upperletters(tipo) == "REVISTA"){
-                MaterialBibliografico* revista = new Revista(nombre, stoi(isbn), autor, aux_bool, stoi(opcion_1), opcion_2);
-                for(int i = 0; i < 100; i++){
-                    if(biblioteca[i] == nullptr){
-                        biblioteca[i] = revista;
-                        break;
-                    }
-                }
+                cout<<"ERROR: NO QUEDA MAS ESPACIO PARA AGREGAR LIBROS"<<endl;
+                cout<<""<<endl;
+                file.close();
+                break;
             }
         }
         file.close();
@@ -589,35 +596,42 @@ void cargaUsuarios(){
     file.open("archivos txt/usuarios.txt", ios::in);
     if(file.is_open()){
         while(getline(file, line)){
-            stringstream ss(line);
-            getline(ss, nombre, '|');
-            getline(ss, id, '|');
-            getline(ss, texto_1, '|');
-            getline(ss, texto_2, '|');
-            getline(ss, texto_3, '|');
-            getline(ss, texto_4, '|');
-            getline(ss, texto_5, '|');
+            if(hayEspacioUsers()){
+                stringstream ss(line);
+                getline(ss, nombre, '|');
+                getline(ss, id, '|');
+                getline(ss, texto_1, '|');
+                getline(ss, texto_2, '|');
+                getline(ss, texto_3, '|');
+                getline(ss, texto_4, '|');
+                getline(ss, texto_5, '|');
 
-            Usuario* user = new Usuario(nombre, stoi(id));
-            for(int i = 0; i < 100; i++){
-                if(usuarios[i] == nullptr){
-                    usuarios[i] = user;
-                    break;
+                Usuario* user = new Usuario(nombre, stoi(id));
+                for(int i = 0; i < 100; i++){
+                    if(usuarios[i] == nullptr){
+                        usuarios[i] = user;
+                        break;
+                    }
+                } 
+
+                lista_textos[0] = texto_1;
+                lista_textos[1] = texto_2;
+                lista_textos[2] = texto_3;
+                lista_textos[3] = texto_4;
+                lista_textos[4] = texto_5;
+
+                for(int i = 0; i<5; i++){
+                    if(lista_textos[i] != "" and lista_textos[i] != " "){
+                        aux_material = materialObj(lista_textos[i]);
+                        user->prestarMaterial(aux_material);
+                        cout<<""<<endl;
+                    }
                 }
-            } 
-
-            lista_textos[0] = texto_1;
-            lista_textos[1] = texto_2;
-            lista_textos[2] = texto_3;
-            lista_textos[3] = texto_4;
-            lista_textos[4] = texto_5;
-
-            for(int i = 0; i<5; i++){
-                if(lista_textos[i] != "" and lista_textos[i] != " "){
-                    aux_material = materialObj(lista_textos[i]);
-                    user->prestarMaterial(aux_material);
-                    cout<<""<<endl;
-                }
+            }else{
+                cout<<"ERROR: NO QUEDA MAS ESPACIO PARA AGREGAR USUARIOS"<<endl;
+                cout<<""<<endl;
+                file.close();
+                break;
             }
         }
         file.close();
