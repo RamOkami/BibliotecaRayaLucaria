@@ -1,7 +1,14 @@
 README
 CODIGO CREADO POR LOS INTEGRANTES:
-Nicolas Antonio Rojas Bustos, 21.295.708-9, nicolas.rojas@alumnos.ucn.cl, paralelo
-Ramses Balthazar Quintanilla Paez, 21.620.464-6, ramses.quintanilla@alumnos.ucn.cl, paralelo
+Nicolas Antonio Rojas Bustos, 21.295.708-9, nicolas.rojas11@alumnos.ucn.cl, paralelo C2
+Ramses Balthazar Quintanilla Paez, 21.620.464-6, ramses.quintanilla@alumnos.ucn.cl, paralelo C2
+
+IMPORTANTE:
+EL CODIGO ESTA CREADO PARA QUE PUEDA FUNCIONAR TANTO EN UN CODESPACE DE GITHUB EN EL NAVEGADOR WEB LO CUAL ES UN ENTORNO (LINUX) POR LO QUE A LA HORA DE EJECUTAR DEBE DE OCUPAR LA OPCION C/C++: g++ build active file (Linux).
+
+EN CASO DE EJECUTAR EN VSCODE O UN EDITOR EN ENTORNO DE WINDOWS SOLO SELECCIONE LA OPCION DE C/C++: g++ build active file (MSYS2 - Windows).
+
+TODO ESTO CON EL FIN DE EVITAR ALGUN ERROR. GRACIAS.
 
 RECOMENDACIONES INICIALES:
 El menu cuenta con 7 opciones, de las cuales lo mas recomendable para comenzar con una ejecucion rapida y cargar los datos, es recomendable
