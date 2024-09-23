@@ -132,7 +132,7 @@ void ingresoDatos(int aux){
         }
 
         linea = "LIBRO|"+nombre+"|"+to_string(isbn)+"|"+autor+"|"+aux_prestamo+"|"+fechaPublicacion+"|"+resumen;
-        escribirTxt("archivos txt/materiales.txt",linea);
+        escribirTxt("docs/materiales.txt",linea);
 
         cout<<"Material agregado con exito"<<endl;
         cout<<endl;
@@ -150,7 +150,7 @@ void ingresoDatos(int aux){
         }
 
         linea = "REVISTA|"+nombre+"|"+to_string(isbn)+"|"+autor+"|"+aux_prestamo+"|"+to_string(numeroEdicion)+"|"+mesPublicacion;
-        escribirTxt("archivos txt/materiales.txt",linea);
+        escribirTxt("docs/materiales.txt",linea);
 
         cout<<"Material agregado con exito"<<endl;
         cout<<endl;
@@ -269,6 +269,7 @@ void opcionesMaterial(){
         if(opera < 1 or opera > 3){
             cout<<"ERROR: Valor fuera de rango..."<<endl;
             cout<<"REINGRESAR DATOS PORFAVOR"<<endl; 
+            cout<<""<<endl;
         }else{
             switch(opera){
             case 1:
@@ -305,7 +306,7 @@ void prestarMaterial(){
                 line_aux = user->getNombre()+"|"+to_string(_id)+user->mostrarLista();
                 user->prestarMaterial(aux_material);
                 line = user->getNombre()+"|"+to_string(_id)+user->mostrarLista();
-                sobreescribirTxt("archivos txt/usuarios.txt", line_aux, line);
+                sobreescribirTxt("docs/usuarios.txt", line_aux, line);
                 cout<<""<<endl;
             }else{
                 cout<<""<<endl;
@@ -338,7 +339,7 @@ void devolverMaterial(){
             line_aux = user->getNombre()+"|"+to_string(_id)+""+user->mostrarLista();
             user->devolverMaterial(aux_material);
             line = user->getNombre()+"|"+to_string(_id)+""+user->mostrarLista();
-            sobreescribirTxt("archivos txt/usuarios.txt", line_aux, line);
+            sobreescribirTxt("docs/usuarios.txt", line_aux, line);
             cout<<""<<endl;
         }else{
             cout<<""<<endl;
@@ -351,6 +352,7 @@ void devolverMaterial(){
 //-----------------------------------OPCIONES USUARIO-----------------------------------------
 void gestionUsuarios(){
     int opera = 0, _id = 0;
+    Usuario* user_id;
     do{
         cout<<"Gestion de Usuarios:"<<endl;
         cout<<"1. Agregar Usuario"<<endl;
@@ -379,6 +381,9 @@ void gestionUsuarios(){
                 cout<<""<<endl;
                 cout<<"-------------------------------------------------------"<<endl;
                 buscarUsuario(_id, true);
+                user_id = usuarioObj(_id);
+                cout<<"Libros Prestados: "<<user_id->mostrarLista()<<endl;
+                cout<<"-------------------------------------------------------"<<endl;
                 cout<<""<<endl;
                 break;
             case 3:
@@ -422,7 +427,7 @@ void addUser(){
     }
 
     line = _nombre+"|"+to_string(_id)+user->mostrarLista();
-    escribirTxt("archivos txt/usuarios.txt", line);
+    escribirTxt("docs/usuarios.txt", line);
 
     cout<<"Usuario Creado con Exito"<<endl;
     cout<<""<<endl;
@@ -444,7 +449,7 @@ bool buscarUsuario(int id, bool aux){
 
 void deleteUser(){
     string line,aux_line;
-    string list_text [5];
+    string list_text [5] = {""};
     int _id;
     bool aux = true;
     MaterialBibliografico* aux_material;
@@ -467,10 +472,7 @@ void deleteUser(){
     if(_id != 0){
         for(int i = 0; i < 100; i++){
             if(usuarios[i] != nullptr and usuarios[i]->getId() == _id){
-                line = usuarios[i]->getNombre()+"|"+to_string(_id)+usuarios[i]->mostrarLista();
-                deleteTxt("archivos txt/usuarios.txt", line);
-                cout<<""<<endl;
-                
+                cout<<usuarios[i]->getNombre()<<endl;
                 aux_line = usuarios[i]->mostrarLista();
                 stringstream ss(aux_line);
                 getline(ss, list_text[0], '|');
@@ -479,17 +481,19 @@ void deleteUser(){
                 getline(ss, list_text[3], '|');
                 getline(ss, list_text[4], '|');
 
-                for(int i = 0; i<5; i++){
-                    if(list_text[i] != "" and list_text[i] != " "){
-                        aux_material = materialObj(list_text[i]);
+                for(string element:list_text){
+                    if(element != "" and element != " "){
+                        aux_material = materialObj(element);
                         usuarios[i]->devolverMaterial(aux_material);
                     }
                 }
 
-                cout<<"Usuario "<<usuarios[i]->getId()<<" Eliminado con Exito"<<endl;
+                deleteTxt("docs/usuarios.txt", usuarios[i]->getNombre());
+                cout<<"Usuario "<<usuarios[i]->getNombre()<<" Eliminado con Exito"<<endl;
                 cout<<""<<endl;
                 delete usuarios[i];
                 usuarios[i] = nullptr;
+                break;
             }
         }
     }
@@ -534,7 +538,7 @@ void cargaMateriales(){
 
     cout<<"CARGANDO MATERIALES..."<<endl;
 
-    file.open("archivos txt/materiales.txt", ios::in);
+    file.open("docs/materiales.txt");
     if(file.is_open()){
         while(getline(file, line)){
             if(hayEspacio()){
@@ -591,9 +595,8 @@ void cargaUsuarios(){
     string lista_textos [5];
 
     cout<<"CARGANDO USUARIOS..."<<endl;
-    cout<<""<<endl;
     
-    file.open("archivos txt/usuarios.txt", ios::in);
+    file.open("docs/usuarios.txt", ios::in);
     if(file.is_open()){
         while(getline(file, line)){
             if(hayEspacioUsers()){
@@ -707,13 +710,48 @@ string upperletters(string palabra){
     return palabra;
 }
 
+void deleteTxt(string ruta, string user_name){
+    fstream file;
+    fstream temp_file;
+    string line, _user_name;
+
+    file.open(ruta, ios::in);
+    temp_file.open("docs/temp.txt", ios::out);
+
+    if(file.is_open() and temp_file.is_open()){
+        while(getline(file, line)){
+            stringstream ss(line);
+            getline(ss, _user_name, '|');
+            if(upperletters(user_name) != upperletters(_user_name)){
+                temp_file<<line<<endl;
+            }
+        }
+        file.close();
+        temp_file.close();
+
+        if(remove(ruta.c_str()) != 0){
+            cout<<"ERROR: NO SE PUDO ELIMINAR EL ARCHIVO..."<<endl;
+            cout<<""<<endl;
+        }else{
+            if(rename("docs/temp.txt", ruta.c_str()) != 0) {
+                cout<<"ERROR: NO SE PUDO RENOMBRAR EL ARCHIVO..."<<endl;
+                cout<<""<<endl;
+            }
+        }
+
+    }else{
+        cout<<"ERROR: NO SE PUDO ABRIR EL ARCHIVO..."<<endl;
+        cout<<""<<endl;
+    }
+}
+
 void sobreescribirTxt(string ruta_file, string mod_line, string new_line){
     fstream file;
     fstream temp_file;
     string line;
 
     file.open(ruta_file, ios::in);
-    temp_file.open("archivos txt/temp.txt", ios::out);
+    temp_file.open("docs/temp.txt", ios::out);
 
     if(file.is_open() and temp_file.is_open()){
         while(getline(file, line)){
@@ -731,40 +769,7 @@ void sobreescribirTxt(string ruta_file, string mod_line, string new_line){
             cout<<"ERROR: NO SE PUDO ELIMINAR EL ARCHIVO..."<<endl;
             cout<<""<<endl;
         }else{
-            if(rename("archivos txt/temp.txt", ruta_file.c_str()) != 0) {
-                cout<<"ERROR: NO SE PUDO RENOMBRAR EL ARCHIVO..."<<endl;
-                cout<<""<<endl;
-            }
-        }
-    }else{
-        cout<<"ERROR: NO SE PUDO ABRIR EL ARCHIVO..."<<endl;
-        cout<<""<<endl;
-    }
-}
-
-void deleteTxt(string ruta_file, string del_line){
-    fstream file;
-    fstream temp_file;
-    string line;
-
-    file.open(ruta_file, ios::in);
-    temp_file.open("archivos txt/temp.txt", ios::out);
-
-    if(file.is_open() and temp_file.is_open()){
-        while(getline(file, line)){
-            if(line != del_line){
-                temp_file<<line<<endl;
-            }
-        }
-    
-        file.close();
-        temp_file.close();
-
-        if(remove(ruta_file.c_str()) != 0){
-            cout<<"ERROR: NO SE PUDO ELIMINAR EL ARCHIVO..."<<endl;
-            cout<<""<<endl;
-        }else{
-            if(rename("archivos txt/temp.txt", ruta_file.c_str()) != 0) {
+            if(rename("docs/temp.txt", ruta_file.c_str()) != 0) {
                 cout<<"ERROR: NO SE PUDO RENOMBRAR EL ARCHIVO..."<<endl;
                 cout<<""<<endl;
             }

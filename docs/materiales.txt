@@ -1,18 +1,16 @@
 LIBRO|Okami World|18|OkamiRK|no prestado|2004|Muy bueno totalmente recomendado para toda la familia
-REVISTA|Como mejorar en lol|99|manute|no prestado|101|febrero
 LIBRO|El Principito|20|No se|no prestado|1999|Muy bueno pero no se como se llama el autor pero muy bueno si
-REVISTA|Science|1734|Okami|no prestado|120|Diciembre
 LIBRO|Science 2|239|Morgan Freemn|no prestado|12/03/19|Muy bueno para pensar seniores
 LIBRO|Quantum Realities|134|J.K. Smith|no prestado|29/04/13|Una guía fascinante para el futuro.
 LIBRO|Artificial Mind|270|Nina Armstrong|no prestado|15/05/03|Perspectivas asombrosas sobre la tecnología.
 LIBRO|The Time Paradox|631|Rick Clark|no prestado|23/05/09|Perspectivas asombrosas sobre la tecnología.
 LIBRO|Digital Fortress|469|Dr. Lee Hinton|no prestado|08/04/04|Excelente recurso para aprender nuevas ideas.
-LIBRO|Space Odyssey|1111|Ava Monroe|no prestado|04/04/92|Reflexiones profundas sobre la evolución humana. (ID corregido)
-LIBRO|Cyberpunk Dreams|7111|Morgan Freeman|no prestado|23/10/05|Reflexiones profundas sobre la evolución humana. (ID corregido)
+LIBRO|Space Odyssey|1111|Ava Monroe|no prestado|04/04/92|Reflexiones profundas sobre la evolución humana
+LIBRO|Cyberpunk Dreams|7111|Morgan Freeman|no prestado|23/10/05|Reflexiones profundas sobre la evolución humana
 LIBRO|Genetic Code|199|Sam O'Neil|no prestado|15/07/21|Perspectivas asombrosas sobre la tecnología.
 LIBRO|Neural Networks|341|Diana Reyes|no prestado|30/10/97|Excelente recurso para aprender nuevas ideas.
-LIBRO|Lost Worlds|7121|Luis Anderson|no prestado|26/07/17|Una guía fascinante para el futuro. (ID corregido)
-LIBRO|Astrobiology|1133|Emily Parker|no prestado|21/06/98|Reflexiones profundas sobre la evolución humana. (ID corregido)
+LIBRO|Lost Worlds|7121|Luis Anderson|no prestado|26/07/17|Una guía fascinante para el futuro
+LIBRO|Astrobiology|1133|Emily Parker|no prestado|21/06/98|Reflexiones profundas sobre la evolución humana
 LIBRO|AI Revolution|187|Jon Snow|no prestado|24/02/90|Una guía fascinante para el futuro.
 LIBRO|Nanotechnology|178|Alex Kim|no prestado|02/02/20|Una guía fascinante para el futuro.
 LIBRO|Cosmic Frontiers|108|Robert Harrison|no prestado|09/02/91|Reflexiones profundas sobre la evolución humana.
@@ -23,8 +21,10 @@ LIBRO|Virtual Realities|568|Sasha Ivanov|no prestado|23/03/93|Un libro intrigant
 LIBRO|Machine Learning|835|Gabriel Rose|no prestado|04/09/04|Perspectivas asombrosas sobre la tecnología.
 LIBRO|The Quantum Computer|397|James Kepler|no prestado|27/03/13|Perspectivas asombrosas sobre la tecnología.
 LIBRO|Biohacking 101|170|Daniel West|no prestado|22/03/09|Una guía fascinante para el futuro.
+REVISTA|Como mejorar en lol|99|manute|no prestado|101|febrero
+REVISTA|Science|1734|Okami|no prestado|120|Diciembre
 REVISTA|Descubrimientos Genéticos|23|Dr. Antonio Ruiz|no prestado|3455|Enero
-REVISTA|Inteligencia Artificial en la Medicina|TA-002|Ing. María López|no prestado|333|Febrero
+REVISTA|Inteligencia Artificial en la Medicina|002|Ing. María López|no prestado|333|Febrero
 REVISTA|Civilizaciones Antiguas|2133|Prof. Jaime Pérez|no prestado|7345|Marzo
 REVISTA|Diseño Urbano Sustentable|6654|Arq. Laura Sánchez|no prestado|2678|Abril
 REVISTA|Fauna en Extinción|725|Biól. Andrés González|no prestado|4876|Mayo
@@ -33,9 +33,9 @@ REVISTA|Impacto de la Globalización|4737|Eco. Felipe Vargas|no prestado|2346|Ju
 REVISTA|Renacimiento Italiano|928|Hist. Susana Morales|no prestado|314|Agosto
 REVISTA|Energías Renovables|2349|Ing. Carlos Mendoza|no prestado|8|Septiembre
 REVISTA|Alimentación Saludable|1230|Dra. Isabel Gutiérrez|no prestado|165|Octubre
-REVISTA|Nanotecnología en Materiales|1112|Dr. Javier Estrada|no prestado|12|Noviembre (ID corregido)
+REVISTA|Nanotecnología en Materiales|1112|Dr. Javier Estrada|no prestado|12|Noviembre
 REVISTA|Teoría de Números|612|Prof. Luis Herrera|no prestad|5|Diciembre
-REVISTA|El Rol de la Educación Online|1134|Dra. Patricia Vargas|no prestado|4|Enero (ID corregido)
+REVISTA|El Rol de la Educación Online|1134|Dra. Patricia Vargas|no prestado|4|Enero
 REVISTA|Exploración de Marte|614|Astro. Miguel Fernández|no prestado|2|Febrero
 REVISTA|Derechos Humanos Globales|015|Abg. Beatriz Suárez|no prestado|7|Marzo
 REVISTA|Ética en la Inteligencia Artificial|016|Dr. Julio Robles|no prestado|3|Abril

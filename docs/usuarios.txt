@@ -1,0 +1,18 @@
+Manute|23|
+Sakura|34|
+Lucía|45|
+Carlos|56|
+Felipe|67|
+Kathalina|21|El Principito|
+María|78|
+Javier|89|
+Ana|90|
+Nicolas|25|
+Sofía|101|
+David|112|
+Laura|123|
+Andrés|134|
+Elena|145|
+Roberto|156|
+Ramses|20|
+Okami|18|

@@ -20,7 +20,7 @@ void Usuario::prestarMaterial(MaterialBibliografico* _material){
                 break;
             }
         }
-        ordenarLista();
+        //ordenarLista();
     }else{
         cout<<"El usuario tiene el maximo de materiales permitidos (5)."<<endl;
         cout<<"-------------------------------------------------------"<<endl;
@@ -35,7 +35,7 @@ void Usuario::devolverMaterial(MaterialBibliografico* _material){
         cout<<"-------------------------------------------------------"<<endl;
         _material->setEstado(false);
         MaterialesPrestados[index] = nullptr;
-        ordenarLista();
+        //ordenarLista();
     }else{
         cout<<"No se ha encontrado el material"<<endl;
         cout<<"-------------------------------------------------------"<<endl;

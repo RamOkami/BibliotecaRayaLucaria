@@ -15,10 +15,10 @@
                 "system.cpp",
                 "main.cpp",
                 "-o",
-                "${fileDirname}/main.exe"
+                "${workspaceFolder}/build/main.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"
@@ -27,7 +27,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Task for Windows using MSYS2."
+            "detail": "Task for Windows."
         },
         {
             "type": "cppbuild",
@@ -43,10 +43,10 @@
                 "system.cpp",
                 "main.cpp",
                 "-o",
-                "${fileDirname}/main.exe"
+                "${workspaceFolder}/build/main.exe"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"
