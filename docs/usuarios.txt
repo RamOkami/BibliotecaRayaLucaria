@@ -3,7 +3,7 @@ Sakura|34|
 Lucía|45|
 Carlos|56|
 Felipe|67|
-Kathalina|21|El Principito|
+Kathalina|21|
 María|78|
 Javier|89|
 Ana|90|
