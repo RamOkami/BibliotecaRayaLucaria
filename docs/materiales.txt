@@ -1,4 +1,4 @@
- Networks|341|Diana Reyes|no prestado|30/10/97|Excelente recurso para aprender nuevas ideas.
+LIBRO|Networks|341|Diana Reyes|no prestado|30/10/97|Excelente recurso para aprender nuevas ideas.
 LIBRO|Lost Worlds|7121|Luis Anderson|no prestado|26/07/17|Una guía fascinante para el futuro
 REVISTA|Como mejorar en lol|99|manute|no prestado|101|febrero
 LIBRO|Astrobiology|1133|Emily Parker|no prestado|21/06/98|Reflexiones profundas sobre la evolución humana
