@@ -13,6 +13,7 @@ private:
 public:
     Revista(string, int, string, bool, int, string);
     void mostrarInformacion() override;
+    ~Revista() override;
 };
 
 #endif

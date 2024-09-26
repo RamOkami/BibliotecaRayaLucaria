@@ -16,3 +16,4 @@ void Revista::mostrarInformacion(){
     cout<<"Mes de publicacion: "<<mesPublicacion<<endl;
     cout<<"-------------------------------------------------------"<<endl;
 }
+Revista::~Revista() {}

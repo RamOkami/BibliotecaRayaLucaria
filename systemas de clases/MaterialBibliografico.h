@@ -19,6 +19,7 @@ public:
     string getAutor();
     bool getEstado();
     void setEstado(bool);
+    virtual ~MaterialBibliografico();
 };
 
 #endif

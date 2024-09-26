@@ -12,6 +12,7 @@ private:
 public:
     Libro(string, int, string, bool, string, string);
     void mostrarInformacion() override;
+    ~Libro() override;
 };
 
 #endif

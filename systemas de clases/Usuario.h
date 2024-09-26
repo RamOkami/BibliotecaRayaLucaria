@@ -26,6 +26,7 @@ public:
     bool verificadorLista();
     void ordenarLista();
     int buscarLibro(MaterialBibliografico*);
+    ~Usuario();
 };
 
 #endif

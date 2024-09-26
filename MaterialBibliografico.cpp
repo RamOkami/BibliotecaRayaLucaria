@@ -27,3 +27,4 @@ string MaterialBibliografico::getAutor(){return autor;}
 int MaterialBibliografico::getId(){return isbn;}
 bool MaterialBibliografico::getEstado(){return prestado;}
 void MaterialBibliografico::setEstado(bool _prestado){prestado = _prestado;}
+MaterialBibliografico::~MaterialBibliografico() {cout<<"Se destruyo el material: "<<nombre<<endl;}

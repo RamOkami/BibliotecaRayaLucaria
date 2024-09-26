@@ -17,3 +17,5 @@ void Libro::mostrarInformacion(){
     cout<<resumen<<endl;
     cout<<"-------------------------------------------------------"<<endl;
 }
+
+Libro::~Libro() {}

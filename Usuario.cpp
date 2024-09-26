@@ -101,3 +101,5 @@ int Usuario::buscarLibro(MaterialBibliografico* _material){
     }
     return -1;
 }
+
+Usuario::~Usuario() {cout<<"Se destruyo el usuario: "<<nombre<<endl;}

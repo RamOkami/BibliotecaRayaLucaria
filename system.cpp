@@ -60,6 +60,7 @@ void menuGlobal(){
                 break;
             case 7:
                 cout<<"SALIENDO DEL SISTEMA..."<<endl;
+                destructores();
                 break;
             }
         }
@@ -790,5 +791,13 @@ void escribirTxt(string ruta, string add_line){
     }else{
         cout<<"ERROR: NO SE PUDO ABRIR EL ARCHIVO..."<<endl;
         cout<<""<<endl;
+    }
+}
+void destructores() {
+    for (MaterialBibliografico* material:biblioteca) {
+        delete material;
+    }
+    for (Usuario* usuario: usuarios) {
+        delete usuario;
     }
 }

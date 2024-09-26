@@ -38,4 +38,5 @@ string upperletters(string);
 void deleteTxt(string, string);
 void escribirTxt(string, string);
 void sobreescribirTxt(string, string, string);
+void destructores();
 #endif
